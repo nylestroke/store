@@ -1,5 +1,5 @@
 {
-  "name": "@nylestroke/store",
+  "name": "nylestroke-store",
   "version": "0.1.0",
   "description": "Simple, light-way state library for JS/TS",
   "type": "module",
