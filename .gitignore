@@ -3,3 +3,8 @@ dist/
 
 # node
 node_modules/
+
+# ide
+.vscode/
+.idea/
+.vs/
