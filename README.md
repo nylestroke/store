@@ -10,7 +10,7 @@ It helps you write applications that behave consistently, run in different envir
 npm install nylestroke-store
 ```
 
-For more details, see [the NPM page](https://npmjs.com/packages/nylestroke-store).
+For more details, see [the NPM page](https://npmjs.com/package/nylestroke-store).
 
 ## Basic Example
 
