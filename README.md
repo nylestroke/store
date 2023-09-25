@@ -7,10 +7,10 @@ It helps you write applications that behave consistently, run in different envir
 ## Installation
 
 ```
-npm install nylestroke-store
+npm install @nylestroke/store
 ```
 
-For more details, see [the NPM page](https://npmjs.com/package/nylestroke-store).
+For more details, see [the NPM page](https://npmjs.com/package/@nylestroke/store).
 
 ## Basic Example
 
@@ -42,4 +42,4 @@ const state = store.object(); // { "username": "", "password": "" }
 
 ## License
 
-[MIT](LICENSE)
+[MIT](https://github.com/nylestroke/store/blob/master/LICENSE)
