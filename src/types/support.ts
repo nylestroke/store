@@ -2,6 +2,6 @@
  * Platform's enum
  */
 export enum Platform {
-    BROWSER = 'browser',
-    NODE = 'node'
+  BROWSER = 'browser',
+  NODE = 'node',
 }
