@@ -1,5 +1,5 @@
 // export types
-export { Store } from './types/store';
+export { StoreProperties } from './types/store';
 
 // export functions
-export { createStore } from './createStore';
+export { Store } from './store';

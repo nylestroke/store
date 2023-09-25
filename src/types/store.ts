@@ -1,45 +1,28 @@
-/**
- *  A store is an object that holds the application's state tree.
- */
-export type Store<S> = {
-  /**
-   * Getter for store object
-   * @param key
-   */
-  get<K extends keyof S>(key: K): S[K];
-
-  /**
-   * Setter for store object
-   * @param key
-   * @param cb
-   */
-  set<K extends keyof S>(key: K, cb: (current: S[K]) => S[K]): void;
-
-  /**
-   * Delete store object by key
-   * @param key
-   */
-  delete<K extends keyof S>(key: K): void;
-
-  /**
-   * Completely clear a store
-   */
-  clear(): void;
-
-  /**
-   * Make current value empty
-   */
-  empty<K extends keyof S>(key: K): void;
-
-  /**
-   * Pack and return current state of store
-   */
-  object(): S;
-};
+import { ObjectLiteral } from './support';
 
 /**
- * Type for store local storage object
+ * A store is a class that holds the application's state tree.
  */
-export type LocalStore<S> = {
-  data: [S];
+export type StoreProperties<S extends ObjectLiteral> = {
+  /**
+   * Getter for current state (public)
+   *
+   * @returns Current store state
+   */
+  get state(): S;
+
+  /**
+   * Setter for current state (public)
+   *
+   * @param value - new state value
+   */
+  set state(value: S);
+
+  /**
+   * Private setter function
+   *
+   * @param value - new state value
+   * @returns new state
+   */
+  setState(value: S): S;
 };
