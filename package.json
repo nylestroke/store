@@ -1,6 +1,6 @@
 {
   "name": "@nylestroke/store",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Simple, light-way state library for JS/TS",
   "repository": "github:nylestroke/store",
   "bugs": "https://github.com/nylestroke/store/issues",

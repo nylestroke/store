@@ -15,30 +15,32 @@ For more details, see [the NPM page](https://npmjs.com/package/@nylestroke/store
 ## Basic Example
 
 ```js
-import { Store } from '../dist/esm/index.js';
+import { Store } from '@nylestroke/store';
 
-const store = new Store(); // create store
+const store = new Store();
 
-const firstCallback = state => { // create first callback
-  console.log('first callback ', state);
+const firstCallback = state => {
+  console.log('first callback ', state); // callback function
 };
-const firstConfig = state => { // configuration for callback
-  return { a: state.a };
+const firstConfig = state => { // there you can state, as you want
+  return state;
 };
 
-const secondCallback = state => { // create second callback
+const secondCallback = state => {
   console.log('second callback ', state);
 };
-const secondConfig = state => { // configuration for callback
-  return { b: state.b };
+const secondConfig = state => {
+  return [state];
 };
 
-store.subscribe(firstCallback, firstConfig); // subscribe to changes from callback
+store.subscribe(firstCallback, firstConfig); // call subscription with callback and configuration
 store.subscribe(secondCallback, secondConfig);
 
-store.setState({ a: 1 }); // set a new state
+store.setState({ a: 1 }); // add value to state (not set)
+store.clearState(); // clear the state
 store.setState({ a: 2 });
 store.setState({ b: 1 });
+store.cutState('b'); // delete key from a state
 store.setState({ b: 2 });
 ```
 
