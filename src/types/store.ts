@@ -12,19 +12,24 @@ export type StoreProperties<S extends ObjectLiteral> = {
   get state(): S;
 
   /**
-   * Setter for current state (public)
-   *
-   * @param value - new state value
-   */
-  set state(value: S);
-
-  /**
    * Private setter function
    *
    * @param value - new state value
    * @returns new state
    */
   setState(value: S): S;
+
+  /**
+   * Function that clear's the current store state
+   */
+  clearState(): void;
+
+  /**
+   * Remove the value from state
+   *
+   * @param value - some state value
+   */
+  cutState<V extends keyof S>(value: V): void;
 
   /**
    * Subscriber for state

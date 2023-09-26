@@ -17,8 +17,8 @@ export class Subscription<S extends ObjectLiteral>
     if (!isObject(nextState))
       throw new Error('Next state must be an valid object');
     this.#callbackList.forEach((item: CallbackFunction<S>): void => {
-      const currentValue = item.config(currentState);
-      const nextValue = item.config(nextState);
+      const currentValue: S = item.config(currentState);
+      const nextValue: S = item.config(nextState);
       if (!isEqual(currentValue, nextValue)) {
         item.callback(nextValue);
       }

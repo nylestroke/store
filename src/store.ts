@@ -59,4 +59,25 @@ export class Store<S extends ObjectLiteral> implements StoreProperties<S> {
   subscribe<C extends S>(callback: C, config: C): boolean {
     return this.#subscription.subscribe(callback, config);
   }
+
+  /**
+   * State cleaner
+   */
+  clearState(): void {
+    const currentState: S = clone(this.#internalState);
+    this.#internalState = {} as S;
+    const nextState: S = clone(this.#internalState);
+    this.#subscription.publish(currentState, nextState);
+  }
+
+  /**
+   * Remove's the value from a state
+   * @param value - some state value
+   */
+  cutState<V extends keyof S>(value: V): void {
+    const currentState: S = clone(this.#internalState);
+    delete this.#internalState[value];
+    const nextState: S = clone(this.#internalState);
+    this.#subscription.publish(currentState, nextState);
+  }
 }
