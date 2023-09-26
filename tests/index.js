@@ -1,42 +1,25 @@
-import { createStore } from '../dist/esm/index.js';
+import { Store } from '../dist/esm/index.js';
 
-// Create store
-const store = createStore({
-  email: '',
-  username: '',
-  password: '',
-});
-console.debug('Initial store state: ', JSON.stringify(store.object()));
+const store = new Store();
 
-// Changing data
-store.set('email', () => 'admin@google.com');
-store.set('password', () => 'Admin1111');
-store.set('username', () => 'Google Admin');
-console.debug(
-  'Store state after changing data: ',
-  JSON.stringify(store.object()),
-);
+const firstCallback = state => {
+  console.log('first callback ', state);
+};
+const firstConfig = state => {
+  return { a: state.a };
+};
 
-// Clear a store
-store.clear();
-console.debug('Store state after clearing: ', JSON.stringify(store.object()));
+const secondCallback = state => {
+  console.log('second callback ', state);
+};
+const secondConfig = state => {
+  return { b: state.b };
+};
 
-// Add new data
-store.set('email', () => 'support@microsoft.com');
-store.set('password', () => 'Microsoft1111');
-store.set('username', () => 'Microsoft Support');
-console.debug(
-  'Store state after adding new data: ',
-  JSON.stringify(store.object()),
-);
+store.subscribe(firstCallback, firstConfig);
+store.subscribe(secondCallback, secondConfig);
 
-// Delete some data
-store.delete('username');
-console.debug(
-  'Store state after deleting data: ',
-  JSON.stringify(store.object()),
-);
-
-// Empty some data
-store.empty('email');
-console.debug('Store state after empty data: ', JSON.stringify(store.object()));
+store.setState({ a: 1 });
+store.setState({ a: 2 });
+store.setState({ b: 1 });
+store.setState({ b: 2 });

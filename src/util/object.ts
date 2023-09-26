@@ -10,3 +10,11 @@ export const clone = <S>(state: S) => Object.assign({}, state);
  */
 export const isObject = <V>(value: V) =>
   value != null && typeof value === 'object' && Array.isArray(value) === false;
+
+/**
+ * Function that check if two values is equal
+ * @param currentValue - first value
+ * @param nextValue - second value
+ */
+export const isEqual = <V>(currentValue: V, nextValue: V): boolean =>
+  JSON.stringify(currentValue) === JSON.stringify(nextValue);

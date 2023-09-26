@@ -15,29 +15,31 @@ For more details, see [the NPM page](https://npmjs.com/package/@nylestroke/store
 ## Basic Example
 
 ```js
-import { createStore } from 'nylestroke-store';
+import { Store } from '../dist/esm/index.js';
 
-const store = createStore({
-    email: '',
-    username: '',
-    password: ''
-});
+const store = new Store(); // create store
 
-// Set new value
-store.set('email', () => 'admin@nylestroke.me');
+const firstCallback = state => { // create first callback
+  console.log('first callback ', state);
+};
+const firstConfig = state => { // configuration for callback
+  return { a: state.a };
+};
 
-// Get value
-const email = store.get('email'); // { "email": admin@nylestroke.me, ... }
+const secondCallback = state => { // create second callback
+  console.log('second callback ', state);
+};
+const secondConfig = state => { // configuration for callback
+  return { b: state.b };
+};
 
-// Empty value
-store.empty('value'); // { "email": null }
+store.subscribe(firstCallback, firstConfig); // subscribe to changes from callback
+store.subscribe(secondCallback, secondConfig);
 
-// Delete value
-store.delete('email'); // { "username": "", "password": "" } (email completely removed from object)
-
-// Get store state object
-const state = store.object(); // { "username": "", "password": "" }
-
+store.setState({ a: 1 }); // set a new state
+store.setState({ a: 2 });
+store.setState({ b: 1 });
+store.setState({ b: 2 });
 ```
 
 ## License

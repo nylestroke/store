@@ -25,4 +25,12 @@ export type StoreProperties<S extends ObjectLiteral> = {
    * @returns new state
    */
   setState(value: S): S;
+
+  /**
+   * Subscriber for state
+   *
+   * @param callback - function callback
+   * @param config - function config
+   */
+  subscribe<C extends S>(callback: C, config: C): boolean;
 };
